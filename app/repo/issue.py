@@ -1,16 +1,18 @@
+"""Create and open an Issue"""
 from github import Github
-import requests
+from app.config import GithubConfig
 
-# First create a Github instance:
 
-hostname = "github.com/arkhn"
+github_organization = GithubConfig.ORGA
+github_repo = GithubConfig.REPO
+github_token = GithubConfig.GITHUB_TOKEN
 
-# or using an access token
-g = Github("4b9f84ffb90209112049b635fc451a94dbf3bad5")
+# Connect using an access token
+g = Github(github_token)
 
-# Github Enterprise with custom hostname
-repo = g.get_repo("arkhn/cleaning-scripts")
+repo = g.get_repo(f"{github_organization}/{github_repo}")
 
+# make sure these labels exist on the repo
 new_label = repo.get_label("new script")
 update_label = repo.get_label("update script")
 
@@ -32,7 +34,7 @@ class Section:
 class Purpose(Section):
     def __init__(self, content):
         super().__init__()
-        self.title = "Why are you requesting a new script?"
+        self.title = "What will the new script do?"
         self.content = content
 
 
@@ -47,25 +49,21 @@ class Test(Section):
     def __init__(self, examples):
         super().__init__()
         self.title = "Provide several expected inputs and outputs"
-        self.content = "\n".join([
-            f"{input} --> {output}"
-            for input, output in examples
-        ])
+        self.content = "\n".join(
+            [f"`{input}` --> `{output}`" for input, output in examples]
+        )
 
 
-# TODO use template flask
+# TODO use a template of flask instead
 def new_issue(script_name, description, code, examples):
+    issue_title = f"{title} {script_name}"
     body = (
-        f"#{script_name}\n\n" +
-        str(Purpose(description)) +
-        str(Script(code)) +
-        str(Test(examples))
+        f"# {issue_title}\n\n"
+        + str(Purpose(description))
+        + str(Script(code))
+        + str(Test(examples))
     )
 
     print(body)
 
-    # repo.create_issue(
-    #     title=title + script_name,
-    #     labels=[new_label],
-    #     body=body,
-    # )
+    repo.create_issue(title=issue_title, labels=[new_label], body=body)
