@@ -10,7 +10,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>
+      {% if title %}
+      {{ title }}
+      {% else %}
+      Cleaning Script API
+      {% endif %}
+    </title>
   </head>
   <style>
       {% block style %}
@@ -20,6 +26,15 @@
 
     <div class="container">
         <div class="card">
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              <div class="alert alert-primary" role="alert">
+                  {% for message in messages %}
+                  <li>{{ message }}</li>
+                  {% endfor %}
+              </div>
+              {% endif %}
+              {% endwith %}
             <div class="card-body">
               {% block content %}{% endblock %}
           </div>

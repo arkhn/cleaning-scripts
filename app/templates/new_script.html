@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block style %}
+  {{ super() }}
+.code-textarea {
+    font-family: monospace
+}
+{% endblock %}
+{% block content %}
+<form action="" method="post" novalidate>
+    <h3>Submit a new script</h3>
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.name.label }}
+        {% for error in form.name.errors %}
+            <p class="alert alert-danger">{{ error }}</p>
+        {% endfor %}
+        {{ form.name(size=128, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.description.label }}
+        {% for error in form.description.errors %}
+            <p class="alert alert-danger">{{ error }}</p>
+        {% endfor %}
+        {{ form.description(size=256, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.code.label }}
+        {% for error in form.code.errors %}
+            <p class="alert alert-danger">{{ error }}</p>
+        {% endfor %}
+        {{ form.code(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.input_value.label }} --> {{ form.output_value.label }}
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+                {% for error in form.input_value.errors %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+                {{ form.input_value(size=128, class="form-control") }}
+            </div>
+            <div class="col-sm-6">
+                {% for error in form.output_value.errors %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+                {{ form.output_value(size=128, class="form-control") }}
+            </div>
+          </div>
+        </div>
+    </div>
+    <p>{{ form.submit(class="btn btn-primary") }}</p>
+</form>
+{% endblock %}

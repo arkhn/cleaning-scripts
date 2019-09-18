@@ -7,7 +7,8 @@
 {% endblock %}
 {% block content %}
 <p>
-    <a href="{{ url_for('new_script') }}">New Script</a><br />
-    <a href="/list">All scripts</a>
+    <h3>Branch {{ branch_name }} <a href="#" class="btn btn-{{ color }}">{{ status }}</a></h3>
+    <a href="{{ url_for('check', branch=branch_name) }}">Re-check</a><br />
+    <a href="/">Go to main page</a>
 </p>
 {% endblock %}

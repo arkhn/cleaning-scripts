@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block style %}
+  {{ super() }}
+.code-textarea {
+    font-family: monospace
+}
+{% endblock %}
+{% block content %}
+<p>
+    <a href="{{ url_for('new_script') }}">New Script</a><br />
+    <a href="/list">All scripts</a>
+</p>
+{% endblock %}
