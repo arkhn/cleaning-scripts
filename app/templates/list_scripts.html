@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block style %}
+  {{ super() }}
+.code-textarea {
+    font-family: monospace
+}
+{% endblock %}
+{% block content %}
+<div class="card-body">
+    <h5 class="card-title">
+    {% if query != '' %}
+        Search results for "{{ query }}"
+    {% else %}
+        All scripts
+    {% endif %}
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ scripts|length }} result(s)</h6>
+    <p class="card-text">
+        <ul class="list-group">
+        {% for script in scripts %}
+            <li class="list-group-item">
+                <b>{{ script[0] }}</b>: {{ script[1] }}
+            </li>
+        {% endfor %}
+        </ul>
+    </p>
+    <a href="{{ url_for('index') }}">Back to home</a><br />
+</div>
+{% endblock %}

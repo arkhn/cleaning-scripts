@@ -5,6 +5,17 @@ from app.forms import NewScriptForm
 
 from app.repo.submit import submit
 from app.repo.check import get_branch_status
+from app.repo.list import list_repo_scripts
+
+
+@app.route("/list")
+def list_scripts():
+    query = request.args.get("query", "")
+
+    scripts = list_repo_scripts(query)
+    return render_template(
+        "list_scripts.html", title="Found scripts", scripts=scripts, query=query
+    )
 
 
 @app.route("/new", methods=["GET", "POST"])

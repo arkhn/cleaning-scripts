@@ -78,7 +78,7 @@ def test_{script_name}():
 """
         return code
     else:
-        raise ValueError("The script provided deosn't seem to be valid.")
+        raise ValueError("The script provided doesn't seem to be valid.")
 
 
 def new_pull_request(script_name, description, script_code, examples):
