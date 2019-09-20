@@ -5,6 +5,7 @@ import re
 import random
 
 from app.config import GithubConfig
+from app.repo.utils import ensure_repo_exists
 
 
 clone_path = GithubConfig.CLONE_PATH
@@ -12,13 +13,9 @@ github_organization = GithubConfig.ORGA
 github_repo = GithubConfig.REPO
 github_token = GithubConfig.GITHUB_TOKEN
 
-REPO_PATH = f"{clone_path}/{github_repo}"
 
-if not os.path.isdir(REPO_PATH):
-    print("Cloning repo...")
-    git.Git(clone_path).clone(
-        f"https://github.com/{github_organization}/{github_repo}.git"
-    )
+REPO_PATH = f"{clone_path}/{github_repo}"
+ensure_repo_exists(clone_path, github_organization, github_repo)
 
 repo = git.Repo(REPO_PATH)
 
@@ -26,7 +23,6 @@ repo = git.Repo(REPO_PATH)
 def create_pull_request(user, script_name, code):
     # Go in the proper branch
     branch_name = f"{user}_new_branch"
-    print("CREATE branch", branch_name)
     new_branch = False
     try:
         repo.git.checkout(branch_name)
@@ -44,7 +40,6 @@ def create_pull_request(user, script_name, code):
 
         with open(f"{REPO_PATH}/{dir}/{file_name}", "w") as f:
             f.write(file_content)
-            print("Write", file_name)
 
     repo.git.add("--all")
     repo.git.commit("-m", f"Add {script_name} script")
@@ -82,8 +77,8 @@ def test_{script_name}():
 
 
 def new_pull_request(script_name, description, script_code, examples):
+    # TODO include description
     user = f"user{random.randint(10000, 100000)}"
-    print(generate_test(script_code, examples))
     code = {
         f"script_{script_name}.py": script_code,
         f"test_script_{script_name}.py": generate_test(script_code, examples),

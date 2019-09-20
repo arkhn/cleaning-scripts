@@ -26,6 +26,8 @@ repo = git.Repo(REPO_PATH)
 
 
 def list_repo_scripts(query):
+    repo.git.pull("--rebase")
+
     query = query.lower()
     script_path = f"{REPO_PATH}/scripts/custom"
     script_files = [f for f in listdir(script_path) if isfile(join(script_path, f)) and '__' not in f]
