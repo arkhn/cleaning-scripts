@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, request, url_for
+from flask import render_template, flash, redirect, request, url_for, jsonify
 
 from app import app
 from app.forms import NewScriptForm
@@ -13,9 +13,13 @@ def list_scripts():
     query = request.args.get("query", "")
 
     scripts = list_repo_scripts(query)
-    return render_template(
-        "list_scripts.html", title="Found scripts", scripts=scripts, query=query
-    )
+
+    if request.headers.get("Content-Type") == "application/json":
+        return jsonify({"query": query, "scripts": scripts})
+    else:
+        return render_template(
+            "list_scripts.html", title="Found scripts", scripts=scripts, query=query
+        )
 
 
 @app.route("/new", methods=["GET", "POST"])
@@ -40,15 +44,19 @@ def check():
     branch_name = request.args.get("branch", None)
     status, color = get_branch_status("cleaning-scripts", branch_name)
 
-    print("STATUS:", branch_name)
-    print(status)
-    return render_template(
-        "check.html", title="Home", branch_name=branch_name, status=status, color=color
-    )
+    if request.headers.get("Content-Type") == "application/json":
+        return jsonify({"branch_name": branch_name, "status": status})
+    else:
+        return render_template(
+            "check.html",
+            title="Home",
+            branch_name=branch_name,
+            status=status,
+            color=color,
+        )
 
 
 @app.route("/")
 @app.route("/index")
 def index():
-    print(get_branch_status("cleaning-scripts", "master"))
     return render_template("index.html", title="Home")

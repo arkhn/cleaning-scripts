@@ -30,11 +30,14 @@ def list_repo_scripts(query):
 
     query = query.lower()
     script_path = f"{REPO_PATH}/scripts/custom"
-    script_files = [f for f in listdir(script_path) if isfile(join(script_path, f)) and '__' not in f]
-    print(script_files)
+    script_files = [
+        file
+        for file in listdir(script_path)
+        if isfile(join(script_path, file)) and "__" not in file
+    ]
     scripts = []
     for script_file in script_files:
-        with open(f"{script_path}/{script_file}", 'r') as content_file:
+        with open(f"{script_path}/{script_file}", "r") as content_file:
             content = content_file.read()
 
             results = re.search(r"def (\w+?)\(", content)
@@ -43,16 +46,18 @@ def list_repo_scripts(query):
             else:
                 script_name = f"{script_file} (looks broken)"
 
-            content = content.replace('\n', ' ')
+            content = content.replace("\n", " ")
             results = re.search('"""(.*?)"""', content)
             if results is not None:
                 description = results.group(1)
             else:
                 description = f"(empty description)"
 
-            print("query", query)
-            if query == "" or query in script_name.lower() or query in description.lower():
+            if (
+                query == ""
+                or query in script_name.lower()
+                or query in description.lower()
+            ):
                 scripts.append((script_name, description))
 
     return scripts
-
