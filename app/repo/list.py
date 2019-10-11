@@ -24,6 +24,7 @@ if not os.path.isdir(REPO_PATH):
 
 repo = git.Repo(REPO_PATH)
 
+substitution_regex = r"def (\w+?)\("
 
 def list_repo_scripts(query):
     repo.git.pull("--rebase")
@@ -40,7 +41,7 @@ def list_repo_scripts(query):
         with open(f"{script_path}/{script_file}", "r") as content_file:
             content = content_file.read()
 
-            results = re.search(r"def (\w+?)\(", content)
+            results = re.search(substitution_regex, content)
             if results is not None:
                 script_name = results.group(1)
             else:
@@ -51,13 +52,16 @@ def list_repo_scripts(query):
             if results is not None:
                 description = results.group(1)
             else:
-                description = f"(empty description)"
+                description = None
 
             if (
                 query == ""
                 or query in script_name.lower()
                 or query in description.lower()
             ):
-                scripts.append((script_name, description))
+                scripts.append({
+                    "code": script_name,
+                    "description": description,
+                })
 
     return scripts
