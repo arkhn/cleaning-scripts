@@ -19,7 +19,10 @@
         <ul class="list-group">
         {% for script in scripts %}
             <li class="list-group-item">
-                <b>{{ script[0] }}</b>: {{ script[1] }}
+                <b>{{ script.code }}</b>
+                {% if script.description %}
+                    : {{ script.description }}
+                {% endif %}
             </li>
         {% endfor %}
         </ul>
