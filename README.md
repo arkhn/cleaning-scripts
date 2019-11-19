@@ -22,10 +22,11 @@ The API can be used either as a small webservice, or directly accessed through t
 
 To set up the API:
 ```
-cd app
 set GITHUB_TOKEN=<your_github_token>
 flask run
 ```
+
+Check `http://localhost:5000`
 
 ## Start contributing
 
