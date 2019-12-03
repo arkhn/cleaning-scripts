@@ -19,5 +19,5 @@ class GithubConfig(object):
         )
 
     CLONE_PATH = "/tmp/clones"
-    ORGA = "LaRiffle"
+    ORGA = "Arkhn"
     REPO = "cleaning-scripts"
