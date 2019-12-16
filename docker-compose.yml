@@ -1,6 +1,7 @@
 version: '3'
 services:
-  web:
+  api:
+    image: cleaning-scripts
     env_file: app/.env
     build: .
     ports:
