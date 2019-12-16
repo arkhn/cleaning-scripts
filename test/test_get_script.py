@@ -27,7 +27,7 @@ def test_get_script_utils():
 
 def test_get_script_logic():
     # logical function
-    func = 'if_valid(clean_identity, "Hello")'
+    func = 'if_valid(strip, "Hello")'
 
     row_input = ""
     assert get_script(func)(row_input) == ""
@@ -38,19 +38,19 @@ def test_get_script_logic():
     row_input = "NaN"
     assert get_script(func)(row_input) == ""
 
-    func = "if_valid(clean_identity, 'Hello')"
+    func = "if_valid(strip, 'Hello')"
     row_input = "holà"
     assert get_script(func)(row_input) == "Hello"
 
-    func = 'if_valid(clean_identity, "7")'
+    func = 'if_valid(strip, "7")'
     row_input = "holà"
     assert get_script(func)(row_input) == "7"
 
-    func = 'if_valid(clean_identity, "9.2")'
+    func = 'if_valid(strip, "9.2")'
     row_input = "holà"
     assert get_script(func)(row_input) == "9.2"
 
-    func = "if_valid(clean_identity, make_title)"
+    func = "if_valid(strip, make_title)"
 
     row_input = ""
     assert get_script(func)(row_input) == ""
@@ -59,7 +59,7 @@ def test_get_script_logic():
     assert get_script(func)(row_input) == "Holà"
 
     # Un authorized param
-    func = "if_valid(clean_identity, my_fancy_function)"
+    func = "if_valid(strip, my_fancy_function)"
     try:
         _ = get_script(func)
         assert False

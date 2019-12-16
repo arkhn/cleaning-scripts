@@ -1,7 +1,9 @@
 """Utility scripts"""
 from .is_empty import is_empty
-from .clean_identity import clean_identity
 from .make_title import make_title
+from .merge_concat import merge_concat
+from .select_first_not_empty import select_first_not_empty
+from .strip import strip
 
 
-__all__ = ["is_empty", "clean_identity", "make_title"]
+__all__ = ["is_empty", "make_title", "merge_concat", "select_first_not_empty", "strip"]
