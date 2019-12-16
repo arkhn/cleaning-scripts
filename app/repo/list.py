@@ -26,18 +26,21 @@ repo = git.Repo(REPO_PATH)
 
 substitution_regex = r"def (\w+?)\("
 
+
 def list_repo_scripts(query):
     repo.git.pull("--rebase")
 
     query = query.lower()
-    script_path = f"{REPO_PATH}/scripts/custom"
+    categories = ["utils", "custom"]
+    script_paths = [f"{REPO_PATH}/scripts/{category}" for category in categories]
     script_files = [
-        file
+        (category, script_path, file)
+        for category, script_path in zip(categories, script_paths)
         for file in listdir(script_path)
         if isfile(join(script_path, file)) and "__" not in file
     ]
     scripts = []
-    for script_file in script_files:
+    for category, script_path, script_file in script_files:
         with open(f"{script_path}/{script_file}", "r") as content_file:
             content = content_file.read()
 
@@ -59,9 +62,12 @@ def list_repo_scripts(query):
                 or query in script_name.lower()
                 or query in description.lower()
             ):
-                scripts.append({
-                    "code": script_name,
-                    "description": description,
-                })
+                scripts.append(
+                    {
+                        "category": category,
+                        "name": script_name,
+                        "description": description,
+                    }
+                )
 
     return scripts

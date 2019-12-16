@@ -19,7 +19,8 @@
         <ul class="list-group">
         {% for script in scripts %}
             <li class="list-group-item">
-                <b>{{ script.code }}</b>
+                <b>{{ script.name }}</b>
+                <span class="badge badge-secondary">{{ script.category }}</span>
                 {% if script.description %}
                     : {{ script.description }}
                 {% endif %}
