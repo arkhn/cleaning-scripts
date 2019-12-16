@@ -10,7 +10,7 @@ class FamilySituation(Enum):
     PACSED = "Pacsé(e)"
 
 
-def family_situation(code):
+def map_family_situation(code):
     status = FamilySituation
     mapping = {
         "M": status.MARRIED.value,
