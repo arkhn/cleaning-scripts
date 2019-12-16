@@ -8,6 +8,10 @@ WORKDIR /app
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
+
 ADD . /app
 
 EXPOSE 5000
