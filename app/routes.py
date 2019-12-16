@@ -6,6 +6,7 @@ from app.forms import NewScriptForm
 from app.repo.submit import submit
 from app.repo.check import get_branch_status
 from app.repo.list import list_repo_scripts
+from app.repo.show import show_repo_script
 
 
 @app.route("/list")
@@ -20,6 +21,17 @@ def list_scripts():
         return render_template(
             "list_scripts.html", title="Found scripts", scripts=scripts, query=query
         )
+
+
+@app.route("/show/<script_name>")
+def show_script(script_name):
+
+    script = show_repo_script(script_name=script_name)
+
+    if request.headers.get("Content-Type") == "application/json":
+        return jsonify({"script": script})
+    else:
+        return render_template("show_script.html", title="Show script", script=script)
 
 
 @app.route("/new", methods=["GET", "POST"])
