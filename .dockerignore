@@ -1,0 +1,15 @@
+# ignore everything
+**/*
+
+# except
+!/app
+!/scripts
+!.dockerignore
+!Dockerfile
+!docker-compose.yml
+!requirements.txt
+
+
+# but still remove
+/app/.env
+__pycache__/

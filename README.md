@@ -20,13 +20,27 @@ There are 4 types of scripts:
 
 The API can be used either as a small web service, or directly accessed through the [Pyrog](https://github.com/arkhn/pyrog) interface.
 
+### Manual install
+
 To set up the API:
 ```
 set GITHUB_TOKEN=<your_github_token>
 flask run
 ```
 
-Check `http://localhost:5000`
+Check `http://localhost:5000
+
+### Docker
+
+```
+docker-compose up --build
+```
+Or
+```
+docker build -t cleaning-scripts:latest .
+docker run -p 5000:5000 --env-file=app/.env cleaning-scripts
+```
+
 
 ## Start contributing
 
