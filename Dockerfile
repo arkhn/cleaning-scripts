@@ -14,6 +14,6 @@ RUN apt-get update && \
 
 ADD . /app
 
-EXPOSE 5000
+EXPOSE 5001
 
-CMD flask run --host=0.0.0.0
+CMD flask run --host=0.0.0.0 --port=5001
