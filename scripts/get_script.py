@@ -14,7 +14,7 @@ def get_script(name):
     else:
         if name.startswith("if_valid("):
             # get args part between (  )
-            args_part = name[name.find("(") + 1 : name.rfind(")")]
+            args_part = name[name.find("(") + 1 : name.rfind(")")]  # noqa
             args = re.split(", |,", args_part)
             for i, arg in enumerate(args):
                 if arg in custom.__all__:  # if custom function
