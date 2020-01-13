@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block style %}
+  {{ super() }}
+    .CodeMirror {
+      height: auto !important;
+    }
+{% endblock %}
+{% block content %}
+<div class="card-body">
+    <h5 class="card-title">{{ script.name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+        {% if script.description %}
+            {{ script.description }}
+        {% endif %}
+        <span class="badge badge-secondary">{{ script.category }}</span>
+    </h6>
+    <p class="card-text">
+        <textarea id="code">{{ script.code }}</textarea>
+    </p>
+    <a href="{{ url_for('list_scripts') }}">Back to list</a> · <a href="{{ url_for('index') }}">Back to home</a><br />
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/python/python.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.css" />
+<script>
+    codearea = document.getElementById('code');
+    CodeMirror.fromTextArea(codearea, {
+        lineNumbers: true,
+        mode: "python",
+        indentUnit: 4,
+        readOnly: 'nocursor'
+      });
+</script>
+{% endblock %}

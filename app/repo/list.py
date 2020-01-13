@@ -1,12 +1,11 @@
 """List scripts"""
 import git
 import os
-from os import listdir
-from os.path import isfile, join
 import re
 import random
 
 from app.config import GithubConfig
+from app.repo.utils import get_list_files
 
 
 clone_path = GithubConfig.CLONE_PATH
@@ -26,18 +25,15 @@ repo = git.Repo(REPO_PATH)
 
 substitution_regex = r"def (\w+?)\("
 
+
 def list_repo_scripts(query):
     repo.git.pull("--rebase")
 
     query = query.lower()
-    script_path = f"{REPO_PATH}/scripts/custom"
-    script_files = [
-        file
-        for file in listdir(script_path)
-        if isfile(join(script_path, file)) and "__" not in file
-    ]
+    script_files = get_list_files(REPO_PATH)
+
     scripts = []
-    for script_file in script_files:
+    for category, script_path, script_file in script_files:
         with open(f"{script_path}/{script_file}", "r") as content_file:
             content = content_file.read()
 
@@ -59,9 +55,12 @@ def list_repo_scripts(query):
                 or query in script_name.lower()
                 or query in description.lower()
             ):
-                scripts.append({
-                    "code": script_name,
-                    "description": description,
-                })
+                scripts.append(
+                    {
+                        "category": category,
+                        "name": script_name,
+                        "description": description,
+                    }
+                )
 
     return scripts

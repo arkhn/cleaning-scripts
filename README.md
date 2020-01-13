@@ -8,17 +8,19 @@ This is a repository of Python scripts used in the FHIR integration pipeline to 
 
 ## Scripts
 
-There are 3 types of scripts:
-- `scripts/custom` User defined scripts to address specific task like cleaning a Patient phone number for example
+There are 4 types of scripts:
+- `scripts/custom` User defined scripts to perform specific tasks like cleaning a Patient phone number for example
 - `scripts/utils` Basic scripts (like capitalize, test if empty, etc.)
-- `scripts/logic` Scripts that operate like logic statement and take other scripts as argument
+- `scripts/logic` (Beta) Scripts that operate like logic statement and take other scripts as argument
 
 `scripts/custom` can be extended by users, either by completing new scripts or by adding new ones when no one is addressing their needs. This is done using the API.
 
 
 ## API
 
-The API can be used either as a small webservice, or directly accessed through the [Pyrog](https://github.com/arkhn/pyrog) interface.
+The API can be used either as a small web service, or directly accessed through the [Pyrog](https://github.com/arkhn/pyrog) interface.
+
+### Manual install
 
 To set up the API:
 ```
@@ -26,7 +28,19 @@ set GITHUB_TOKEN=<your_github_token>
 flask run
 ```
 
-Check `http://localhost:5000`
+Check `http://localhost:5000
+
+### Docker
+
+```
+docker-compose up --build
+```
+Or
+```
+docker build -t cleaning-scripts:latest .
+docker run -p 5000:5000 --env-file=app/.env cleaning-scripts
+```
+
 
 ## Start contributing
 

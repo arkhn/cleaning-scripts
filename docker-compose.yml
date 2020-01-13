@@ -1,0 +1,9 @@
+version: '3'
+services:
+  api:
+    image: arkhn/cleaning-scripts:latest
+    container_name: cleaning-scripts
+    env_file: app/.env
+    build: .
+    ports:
+     - "5001:5001"
