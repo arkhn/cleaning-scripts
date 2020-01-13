@@ -4,4 +4,5 @@ def is_empty(value):
         or value == "NaN"
         or value == ""
         or value in "                        "
+        or value == "(null)"
     )
