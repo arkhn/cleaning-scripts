@@ -1,6 +1,5 @@
 """Create and push a new branch"""
 import git
-import os
 import re
 import random
 
@@ -57,7 +56,7 @@ def create_pull_request(user, script_name, code):
 
 
 def generate_test(script_code, examples):
-    results = re.search("def (\w+?)\(", script_code)
+    results = re.search("def (\w+?)\(", script_code)  # noqa
     if results is not None:
         script_name = results.group(1)
         code = f"""

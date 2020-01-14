@@ -2,7 +2,6 @@
 import git
 import os
 import re
-import random
 
 from app.config import GithubConfig
 from app.repo.utils import get_list_files
