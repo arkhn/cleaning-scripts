@@ -3,6 +3,7 @@ def is_empty(value):
     return (
         value is None
         or value == "NaN"
+        or value == "None"
         or value == ""
         or value in "                        "
         or value == "(null)"
