@@ -44,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build
-        run: docker build -t $IMAGE:$TAG #-e app/.env
+        run: docker build -t $IMAGE:$TAG . #-e app/.env
       - name: Publish to the docker hub
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
