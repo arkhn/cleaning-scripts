@@ -58,7 +58,7 @@ jobs:
         run: |
           python setup.py sdist bdist_wheel
           ls -l dist/*.tar.gz
-          twine upload --skip-existing dist/*.tar.gz
+          twine upload dist/*.tar.gz
 #      - name: Build Docker image
 #        run: docker build -t $IMAGE:$TAG .
 #      - name: Publish to the docker hub
