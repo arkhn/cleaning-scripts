@@ -40,7 +40,7 @@ jobs:
       TAG: latest
     runs-on: ubuntu-18.04
     needs: build
-    #if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python
@@ -59,14 +59,14 @@ jobs:
           python setup.py sdist bdist_wheel
           ls -l dist/*.tar.gz
           twine upload dist/*.tar.gz
-#      - name: Build Docker image
-#        run: docker build -t $IMAGE:$TAG .
-#      - name: Publish to the docker hub
-#        run: |
-#          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
-#          docker push $IMAGE:$TAG
-#      - name: Publish to Github Packages
-#        run: |
-#          echo "${{ secrets.GITHUB_TOKEN }}" | docker login $GITHUB_REGISTRY -u ${{ github.actor }} --password-stdin
-#          docker tag $IMAGE:$TAG $GITHUB_REGISTRY/${{ github.repository }}/cleaning-scripts:$TAG
-#          docker push $GITHUB_REGISTRY/${{ github.repository }}/cleaning-scripts:$TAG
+      - name: Build Docker image
+        run: docker build -t $IMAGE:$TAG .
+      - name: Publish to the docker hub
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
+          docker push $IMAGE:$TAG
+      - name: Publish to Github Packages
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login $GITHUB_REGISTRY -u ${{ github.actor }} --password-stdin
+          docker tag $IMAGE:$TAG $GITHUB_REGISTRY/${{ github.repository }}/cleaning-scripts:$TAG
+          docker push $GITHUB_REGISTRY/${{ github.repository }}/cleaning-scripts:$TAG
