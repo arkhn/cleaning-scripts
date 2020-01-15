@@ -10,11 +10,12 @@ requirements = read("requirements.txt").split()
 
 setup(
     name="cleaning-scripts",
-    version="0.1",
+    version="0.1.0",
+    author="Arkhn",
+    author_email="contact@arkhn.org",
     description="Python scripts used in the FHIR integration pipeline "
     "to clean input data for different external sources.",
     url="https://github.com/arkhn/cleaning-scripts",
-    author_email="contact@arkhn.org",
     license="Apache License 2.0",
     packages=find_packages(exclude=["app*", "test*"]),
     long_description=read("README.md"),
