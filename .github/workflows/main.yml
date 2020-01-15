@@ -57,6 +57,7 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           python setup.py sdist bdist_wheel
+          ls -l dist/*.tar.gz
           twine upload --skip-existing dist/*.tar.gz
 #      - name: Build Docker image
 #        run: docker build -t $IMAGE:$TAG .
