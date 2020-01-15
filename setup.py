@@ -11,7 +11,8 @@ requirements = read("requirements.txt").split()
 setup(
     name="cleaning-scripts",
     version="0.1",
-    description="Python scripts used in the FHIR integration pipeline to clean input data for different external sources.",
+    description="Python scripts used in the FHIR integration pipeline "
+    "to clean input data for different external sources.",
     url="https://github.com/arkhn/cleaning-scripts",
     author_email="contact@arkhn.org",
     license="Apache License 2.0",
