@@ -1,4 +1,5 @@
 from enum import Enum
+from scripts import ScriptError
 
 """Map (0,1) code to (active, inactive) """
 
@@ -11,7 +12,9 @@ class activity(Enum):
 
 def map_status(raw_input):
     mapping = {"0": activity.ACTIVE.value, "1": activity.INACTIVE.value}
-    if raw_input in mapping.keys():
+    try:
         return mapping[raw_input]
-    else:
-        return activity.UNKNOWN.value
+    except KeyError:
+        raise ScriptError(
+            f"could not map status {raw_input} (must be in {', '.join(mapping.keys())})"
+        )

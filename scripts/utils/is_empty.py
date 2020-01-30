@@ -5,6 +5,6 @@ def is_empty(value):
         or value == "NaN"
         or value == "None"
         or value == ""
-        or value in "                        "
+        or str(value) in "                        "
         or value == "(null)"
     )
