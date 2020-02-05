@@ -49,14 +49,19 @@ class Test(Section):
     def __init__(self, examples):
         super().__init__()
         self.title = "Provide several expected inputs and outputs"
-        self.content = "\n".join([f"`{input}` --> `{output}`" for input, output in examples])
+        self.content = "\n".join(
+            [f"`{input}` --> `{output}`" for input, output in examples]
+        )
 
 
 # TODO use a template of flask instead
 def new_issue(script_name, description, code, examples):
     issue_title = f"{title} {script_name}"
     body = (
-        f"# {issue_title}\n\n" + str(Purpose(description)) + str(Script(code)) + str(Test(examples))
+        f"# {issue_title}\n\n"
+        + str(Purpose(description))
+        + str(Script(code))
+        + str(Test(examples))
     )
 
     print(body)

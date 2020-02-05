@@ -74,7 +74,11 @@ def check():
         return jsonify({"branch_name": branch_name, "status": status})
     else:
         return render_template(
-            "check.html", title="Home", branch_name=branch_name, status=status, color=color
+            "check.html",
+            title="Home",
+            branch_name=branch_name,
+            status=status,
+            color=color,
         )
 
 
