@@ -3,8 +3,8 @@ import git
 import os
 import re
 
-from app.config import GithubConfig
-from app.repo.utils import get_list_files
+from api.config import GithubConfig
+from api.repo.utils import get_list_files
 
 
 clone_path = GithubConfig.CLONE_PATH
@@ -16,9 +16,7 @@ REPO_PATH = f"{clone_path}/{github_repo}"
 
 if not os.path.isdir(REPO_PATH):
     print("Cloning repo...")
-    git.Git(clone_path).clone(
-        f"https://github.com/{github_organization}/{github_repo}.git"
-    )
+    git.Git(clone_path).clone(f"https://github.com/{github_organization}/{github_repo}.git")
 
 repo = git.Repo(REPO_PATH)
 
@@ -49,17 +47,9 @@ def list_repo_scripts(query):
             else:
                 description = None
 
-            if (
-                query == ""
-                or query in script_name.lower()
-                or query in description.lower()
-            ):
+            if query == "" or query in script_name.lower() or query in description.lower():
                 scripts.append(
-                    {
-                        "category": category,
-                        "name": script_name,
-                        "description": description,
-                    }
+                    {"category": category, "name": script_name, "description": description}
                 )
 
     return scripts

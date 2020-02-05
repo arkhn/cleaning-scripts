@@ -17,7 +17,7 @@ setup(
     "to clean input data for different external sources.",
     url="https://github.com/arkhn/cleaning-scripts",
     license="Apache License 2.0",
-    packages=find_packages(exclude=["app*", "test*"]),
+    packages=find_packages(exclude=["api*", "test*"]),
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     install_requires=requirements,

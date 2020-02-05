@@ -2,14 +2,16 @@
 **/*
 
 # except
-!/app
+!/api
 !/scripts
 !.dockerignore
 !Dockerfile
 !docker-compose.yml
 !requirements.txt
+!start.sh
+!uwsgi.ini
 
 
 # but still remove
-/app/.env
+/api/.env
 __pycache__/
