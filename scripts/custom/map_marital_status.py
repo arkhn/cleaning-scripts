@@ -1,6 +1,6 @@
 from enum import Enum
-import logging
 from scripts import utils
+import logging
 
 
 class MaritalStatus(Enum):
@@ -35,4 +35,4 @@ def map_marital_status(code):
         return status.Unknown.value
     else:
         logging.warning("In {}, args {} not recognised".format("marital_status", code))
-        return code
+        return status.Unknown.value
