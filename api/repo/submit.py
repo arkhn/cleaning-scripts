@@ -1,5 +1,5 @@
-from app.repo.pull_request import new_pull_request
-from app.repo.issue import new_issue
+from api.repo.pull_request import new_pull_request
+from api.repo.issue import new_issue
 
 
 def submit(name, description, code, input, output):

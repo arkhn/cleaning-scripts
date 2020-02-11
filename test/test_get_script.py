@@ -15,7 +15,7 @@ def test_get_script_custom():
     # custom function
     row_input = "20191103"
     func = "clean_date"
-    assert get_script(func)(row_input) == "2019-11-03T00:00:00"
+    assert get_script(func)(row_input) == "2019-11-03"
 
 
 def test_get_script_utils():

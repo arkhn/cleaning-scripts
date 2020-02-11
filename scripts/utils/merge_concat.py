@@ -1,3 +1,4 @@
 def merge_concat(*args):
     """Merging script with a simple concatenation"""
-    return " ".join(args)
+    values = [v for v in args if v is not None]
+    return " ".join(values)

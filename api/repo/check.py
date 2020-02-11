@@ -2,7 +2,7 @@
 import requests
 import json
 
-from app.config import GithubConfig
+from api.config import GithubConfig
 
 github_organization = GithubConfig.ORGA
 

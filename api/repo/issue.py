@@ -1,6 +1,6 @@
 """Create and open an Issue"""
 from github import Github
-from app.config import GithubConfig
+from api.config import GithubConfig
 
 
 github_organization = GithubConfig.ORGA
