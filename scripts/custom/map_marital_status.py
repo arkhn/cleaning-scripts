@@ -1,6 +1,6 @@
 from enum import Enum
-import logging
 from scripts import utils
+import logging
 
 
 class MaritalStatus(Enum):
@@ -12,9 +12,9 @@ class MaritalStatus(Enum):
     Polygamous = "P"
     NeverMarried = "S"
     DomesticPartner = "T"
-    unmarried = "U"
+    Unmarried = "U"
     Widowed = "W"
-    unknown = "UNK"
+    Unknown = "UNK"
 
 
 def map_marital_status(code):
@@ -23,16 +23,16 @@ def map_marital_status(code):
     status = MaritalStatus
     mapping = {
         "MARRIED": status.Married.value,
-        "SINGLE": status.unmarried.value,
+        "SINGLE": status.Unmarried.value,
         "WIDOWED": status.Widowed.value,
         "SEPARATED": status.LegallySeparated.value,
         "DIVORCED": status.Divorced.value,
-        "UNKNOWN": status.unknown.value,
+        "UNKNOWN": status.Unknown.value,
     }
     if code in mapping.keys():
         return mapping[code]
     elif utils.is_empty(code):
-        return status.unknown.value
+        return status.Unknown.value
     else:
         logging.warning("In {}, args {} not recognised".format("marital_status", code))
-        return code
+        return status.Unknown.value
