@@ -16,13 +16,11 @@ def ensure_repo_exists(path, github_organization, github_repo):
 
     if not os.path.isdir(repo_path):
         print("Cloning repo...")
-        git.Git(path).clone(
-            f"https://github.com/{github_organization}/{github_repo}.git"
-        )
+        git.Git(path).clone(f"https://github.com/{github_organization}/{github_repo}.git")
 
 
 def get_list_files(REPO_PATH):
-    categories = ["utils", "custom"]
+    categories = ["utils", "custom", "logic"]
     script_paths = [f"{REPO_PATH}/scripts/{category}" for category in categories]
     script_files = [
         (category, script_path, file)
