@@ -60,7 +60,7 @@ def new_script():
             form.output_value.data,
         )
         flash(f"Script submitted: {form.name.data}")
-        return redirect(url_for("check", branch=branch_name))
+        return redirect(url_for("api.check", branch=branch_name))
 
     return render_template("new_script.html", title="Add a new script", form=form)
 

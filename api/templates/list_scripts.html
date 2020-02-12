@@ -19,7 +19,7 @@
         <ul class="list-group">
         {% for script in scripts %}
             <li class="list-group-item">
-                <a href="{{ url_for('show_script', script_name=script.name) }}"><b>{{ script.name }}</b></a>
+                <a href="{{ url_for('api.show_script', script_name=script.name) }}"><b>{{ script.name }}</b></a>
                 <span class="badge badge-secondary">{{ script.category }}</span>
                 {% if script.description %}
                     : {{ script.description }}
@@ -28,6 +28,6 @@
         {% endfor %}
         </ul>
     </p>
-    <a href="{{ url_for('index') }}">Back to home</a><br />
+    <a href="{{ url_for('api.index') }}">Back to home</a><br />
 </div>
 {% endblock %}
