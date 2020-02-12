@@ -1,6 +1,6 @@
 requests==2.21.0
 WTForms==2.2.1
-Flask_WTF==0.14.2
+Flask_WTF==0.14.3
 Flask==1.1.1
 Flask-Cors==3.0.8
 python-dotenv==0.10.3

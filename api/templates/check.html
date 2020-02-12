@@ -9,7 +9,7 @@
 <p>
     <h3>Branch {{ branch_name }}</h3>
     <a href="#" class="btn btn-{{ color }}"><i class="fa fa-cog"></i> Status: {{ status }}</a>&nbsp;
-    <a class="btn btn-success" href="{{ url_for('check', branch=branch_name) }}">Re-check</a><br />
+    <a class="btn btn-success" href="{{ url_for('api.check', branch=branch_name) }}">Re-check</a><br />
 </p>
 <a href="/">Go to main page</a>
 {% endblock %}
