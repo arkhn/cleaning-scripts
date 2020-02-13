@@ -21,9 +21,7 @@ def get_script(name):
                     args[i] = getattr(custom, arg)
                 elif arg in utils.__all__:  # if utility function
                     args[i] = getattr(utils, arg)
-                elif re.match(r'^".*"$', arg) or re.match(
-                    r"^'.*'$", arg
-                ):  # if string "..." '...'
+                elif re.match(r'^".*"$', arg) or re.match(r"^'.*'$", arg):  # if string "..." '...'
                     args[i] = arg[1:-1]
                 elif arg.replace(".", "", 1).isdigit():  # if number
                     args[i] = arg
