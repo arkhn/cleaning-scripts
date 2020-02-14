@@ -1,4 +1,5 @@
 from enum import Enum
+from scripts import utils
 
 
 class Authorization(Enum):
@@ -7,6 +8,8 @@ class Authorization(Enum):
 
 
 def map_genetic_permission_osiris(raw_input):
+    if utils.is_empty(raw_input):
+        return None
     mapping = {
         "UMLS:C1298907": Authorization.PERMIT.value,
         "UMLS:C1298908": Authorization.DENY.value,
