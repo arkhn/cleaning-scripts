@@ -8,7 +8,7 @@ def clean_quantity(raw_input):
     """
 
     if utils.is_empty(raw_input):
-        return ""
+        return None
     number = re.search(r"-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?", raw_input)
     if not number or number.group(0) != raw_input:
         logging.warning(
@@ -16,6 +16,6 @@ def clean_quantity(raw_input):
                 raw_input
             )
         )
-        return ""
+        return None
     else:
         return float(raw_input)
