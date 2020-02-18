@@ -11,16 +11,7 @@ from api.repo.show import show_repo_script
 api = Blueprint("api", __name__)
 # enable Cross-Origin Resource Sharing
 # "Allow-Control-Allow-Origin" HTTP header
-CORS(
-    api,
-    origins=[
-        r"^https?://.*\.?arkhn\.org(?::\d+)?$",
-        r"^https?://.*\.?arkhn\.com(?::\d+)?$",
-        r"^https?://.*\.?ark\.hn(?::\d+)?$",
-        r"^https?://localhost(?::\d+)?$",
-        r"^https?://0.0.0.0(?::\d+)?$",
-    ],
-)
+CORS(api)
 
 
 @api.route("/list")
