@@ -12,4 +12,4 @@ def clean_quantity(raw_input):
     if not number or number.group(0) != raw_input:
         return ""
     else:
-        return raw_input
+        return float(raw_input)
