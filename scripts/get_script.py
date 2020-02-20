@@ -11,6 +11,8 @@ def get_script(name):
         return getattr(custom, name)
     elif name in utils.__all__:
         return getattr(utils, name)
+    elif name in logic.__all__:
+        return getattr(logic, name)
     else:
         if name.startswith("if_valid("):
             # get args part between (  )
