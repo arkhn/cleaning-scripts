@@ -4,7 +4,7 @@ import logging
 
 
 def clean_quantity(raw_input):
-    """Removes that input is conform to FHIR quantity type
+    """Removes input not conform to FHIR quantity type
     """
 
     if utils.is_empty(raw_input):

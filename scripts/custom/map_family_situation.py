@@ -11,6 +11,8 @@ class FamilySituation(Enum):
 
 
 def map_family_situation(code):
+    """Maps French family situation
+    """
     status = FamilySituation
     mapping = {
         "M": status.MARRIED.value,
@@ -22,5 +24,7 @@ def map_family_situation(code):
     if code in mapping.keys():
         return mapping[code]
     else:
-        logging.warning("In {}, args {} not recognised".format("family_situation", code))
+        logging.warning(
+            "In {}, args {} not recognised".format("family_situation", code)
+        )
         return code
