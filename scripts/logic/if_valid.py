@@ -1,8 +1,4 @@
 from scripts import utils
-
-
-def if_valid(process, callback):
-    # """
     # Behaviour:
     #     if given value (the col provided), process(given) is not empty
     #     then:
@@ -11,7 +7,9 @@ def if_valid(process, callback):
     #         if callback is a function
     #             execute it with value and
     #             return the response
-    # """
+
+def if_valid(process, callback):
+
 
     def if_valid_func(value):
         if not utils.is_empty(process(value)):
