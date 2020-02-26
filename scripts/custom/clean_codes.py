@@ -6,8 +6,7 @@ terminologies = ["HL7:", "UMLS:", "LOINC:", "ATC:"]
 
 
 def clean_codes(raw_input):
-    """
-        Remove all chars before and including the first colon (example: "HL7:male" --> "male" )
+    """Remove terminology system from code ("HL7:male") to ("male")
     """
     if utils.is_empty(raw_input):
         return None

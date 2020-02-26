@@ -18,7 +18,7 @@ class MaritalStatus(Enum):
 
 
 def map_marital_status(code):
-    """Map marital status for mimic database
+    """Map MIMIC marital status
     """
     status = MaritalStatus
     mapping = {

@@ -11,6 +11,8 @@ class FamilySituation(Enum):
 
 
 def map_family_situation(code):
+    """Maps French family situation
+    """
     status = FamilySituation
     mapping = {
         "M": status.MARRIED.value,

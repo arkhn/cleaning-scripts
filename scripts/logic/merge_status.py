@@ -1,7 +1,7 @@
 from scripts.utils import is_empty
 
 
-def classif_status(*args):
+def merge_status(*args):
     """Merge two binary entries and return a FHIR CarePlan.status"""
     for inact, val in args:
         if is_empty(val) or is_empty(inact):
