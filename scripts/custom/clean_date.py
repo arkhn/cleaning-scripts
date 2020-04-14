@@ -18,13 +18,20 @@ def clean_date(raw_input):
         pass
 
     # Handle YYYY-MM-DD H:M:S
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
-    except ValueError:
-        pass
+    if date is None:
+        try:
+            date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            pass
 
-    if date:
-        iso_date = date.strftime("%Y-%m-%d")
-        return iso_date
+    # Handle YYYY-MM-DDTH:M:S
+    if date is None:
+        try:
+            date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
+        except ValueError:
+            pass
+
+    if date is not None:
+        return date.strftime("%Y-%m-%d")
     else:
         return raw_input
