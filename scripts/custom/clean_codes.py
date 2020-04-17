@@ -10,7 +10,7 @@ terminologies = [
     "FINESS:",
     "MedDRA:",
     "CIM10:",
-    "RECIST:",
+    "RECIST:"
 ]
 
 
