@@ -2,16 +2,7 @@ from scripts import utils
 import re
 
 
-terminologies = [
-    "HL7:",
-    "UMLS:",
-    "LOINC:",
-    "ATC:",
-    "FINESS:",
-    "MedDRA:",
-    "CIM10:",
-    "RECIST:",
-]
+terminologies = ["HL7:", "UMLS:", "LOINC:", "ATC:", "FINESS:", "MedDRA:", "CIM10:", "RECIST:"]
 
 
 def clean_codes(raw_input):
