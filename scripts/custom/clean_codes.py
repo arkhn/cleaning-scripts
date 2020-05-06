@@ -2,7 +2,19 @@ from scripts import utils
 import re
 
 
-terminologies = ["HL7:", "UMLS:", "LOINC:", "ATC:", "FINESS:", "MedDRA:", "CIM10:", "RECIST:"]
+terminologies = [
+    "HL7:",
+    "UMLS:",
+    "LOINC:",
+    "ATC:",
+    "FINESS:",
+    "MedDRA:",
+    "CIM10:",
+    "RECIST:",
+    "OSIRIS:",
+    "ICDO3:",
+    "ICD-O-3:",
+]
 
 
 def clean_codes(raw_input):
@@ -17,3 +29,5 @@ def clean_codes(raw_input):
         return raw_input
     elif code.group(1) in terminologies:
         return code.group(2)
+    else:
+        return raw_input
