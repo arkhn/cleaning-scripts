@@ -3,7 +3,7 @@ import datetime
 from scripts import utils
 
 
-def clean_date(raw_input):
+def clean_date(raw_input):  # noqa: C901
     if not isinstance(raw_input, str):
         raw_input = str(raw_input)
     if utils.is_empty(raw_input):
@@ -26,6 +26,12 @@ def clean_date(raw_input):
     # Handle YYYY-MM-DDTH:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
+    except ValueError:
+        pass
+
+    # Handle RFC 1123 format
+    try:
+        date = datetime.datetime.strptime(raw_input, "%a, %d %b %Y %H:%M:%S GMT")
     except ValueError:
         pass
 
