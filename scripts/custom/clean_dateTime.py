@@ -39,3 +39,4 @@ def clean_instant(raw_input):  # noqa: C901
         return raw_input
 
     return date.strptime("%Y-%m-%dT%H:%M:%SZ")
+    
