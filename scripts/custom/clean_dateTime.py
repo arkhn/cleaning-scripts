@@ -39,6 +39,12 @@ def clean_dateTime(raw_input):  # noqa: C901
     except ValueError:
         pass
 
+    # Handle YYYY-MM-DD H:M:S
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        pass
+
     # Handle RFC 1123 format
     try:
         date = datetime.datetime.strptime(raw_input, "%a, %d %b %Y %H:%M:%S GMT")
