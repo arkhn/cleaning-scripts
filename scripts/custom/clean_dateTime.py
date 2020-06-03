@@ -18,10 +18,10 @@ def clean_dateTime(raw_input):  # noqa: C901
     except ValueError:
         pass
 
-    # Handle YYYYMM
+    # Handle YYYY-MM
     try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m")
-        result = date.strftime("%Y%m")
+        date = datetime.datetime.strptime(raw_input, "%Y-%m")
+        result = date.strftime("%Y-%m")
     except ValueError:
         pass
 
