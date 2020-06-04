@@ -35,21 +35,35 @@ def clean_dateTime(raw_input):  # noqa: C901
     # Handle YYYY-MM-DD H:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S")
+        result = date.strftime("%Y-%m-%dT%H:%M:%S+01:00")
     except ValueError:
         pass
 
     # Handle YYYY-MM-DDTH:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S")
+        result = date.strftime("%Y-%m-%dT%H:%M:%S+01:00")
+    except ValueError:
+        pass
+
+    # Handle YYYY-MM-DDTH:M:S+zz:zz
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S+%z")
+        result = date.strftime("%Y-%m-%dT%H:%M:%S%z")
+    except ValueError:
+        pass
+
+    # Handle YYYY-MM-DDTH:M:S-zz:zz
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S-%z")
+        result = date.strftime("%Y-%m-%dT%H:%M:%S%z")
     except ValueError:
         pass
 
     # Handle RFC 1123 format
     try:
         date = datetime.datetime.strptime(raw_input, "%a, %d %b %Y %H:%M:%S GMT")
-        result = date.strftime("%Y%m%dT%H:%M:%S GMT")
+        result = date.strftime("%Y%m%dT%H:%M:%S%z")
 
     except ValueError:
         pass
