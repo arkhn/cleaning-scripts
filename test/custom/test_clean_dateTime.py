@@ -51,6 +51,3 @@ def test_clean_dateTime():
     raw_input_10 = "Wed, 13 Mar 2075 00:00:00 GMT"
     output_10 = clean_dateTime(raw_input_10)
     assert output_10 == "2075-03-13T00:00:00+00:00"
-
-
-print(test_clean_dateTime())
