@@ -1,5 +1,4 @@
 import datetime
-
 from scripts import utils
 
 
