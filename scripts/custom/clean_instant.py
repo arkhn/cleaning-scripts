@@ -32,4 +32,4 @@ def clean_instant(raw_input):  # noqa: C901
     if date is None:
         return raw_input
 
-    return date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
+    return date.strftime("%Y-%m-%dT%H:%M:%S+00:00")

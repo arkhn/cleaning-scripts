@@ -47,7 +47,7 @@ def test_clean_dateTime():
     output_9 = clean_dateTime(raw_input_9)
     assert output_9 == "2015-02-07T13:28:17-05:00"
 
-    ### RFC 1123 format test
+    # RFC 1123 format test
     raw_input_10 = "Wed, 13 Mar 2075 00:00:00 GMT"
     output_10 = clean_dateTime(raw_input_10)
     assert output_10 == "2075-03-13T00:00:00+00:00"
