@@ -30,12 +30,12 @@ def test_clean_dateTime():
     # YYYY-MM-DD H:M:S format test
     raw_input_6 = "2015-02-07 13:28:17"
     output_6 = clean_dateTime(raw_input_6)
-    assert output_6 == "2015-02-07T13:28:17+01:00"
+    assert output_6 == "2015-02-07T13:28:17+02:00"
 
     # YYYY-MM-DDTH:M:S format test
     raw_input_7 = "2015-02-07T13:28:17"
     output_7 = clean_dateTime(raw_input_7)
-    assert output_7 == "2015-02-07T13:28:17+01:00"
+    assert output_7 == "2015-02-07T13:28:17+02:00"
 
     # YYYY-MM-DDTH:M:S+zz:zz format test
     raw_input_8 = "2015-02-07T13:28:17+05:00"
@@ -51,3 +51,6 @@ def test_clean_dateTime():
     raw_input_10 = "Wed, 13 Mar 2075 00:00:00 GMT"
     output_10 = clean_dateTime(raw_input_10)
     assert output_10 == "2075-03-13T00:00:00+00:00"
+
+
+print(test_clean_dateTime())
