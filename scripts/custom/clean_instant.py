@@ -11,12 +11,6 @@ def clean_instant(raw_input):  # noqa: C901
 
     date = None
 
-    # Handle YYYYMMDD
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m%d")
-    except ValueError:
-        pass
-
     # Handle YYYY-MM-DD H:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
@@ -38,4 +32,4 @@ def clean_instant(raw_input):  # noqa: C901
     if date is None:
         return raw_input
 
-    return date.strftime("%Y-%m-%dT%H:%M:%SZ")
+    return date.strftime("%Y-%m-%dT%H:%M:%S+02:00")

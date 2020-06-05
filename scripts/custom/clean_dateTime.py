@@ -25,9 +25,23 @@ def clean_dateTime(raw_input):  # noqa: C901
     except ValueError:
         pass
 
+    # Handle YYYYMM
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y%m")
+        result = date.strftime("%Y-%m")
+    except ValueError:
+        pass
+
     # Handle YYYY-MM-DD
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%d")
+        result = date.strftime("%Y-%m-%d")
+    except ValueError:
+        pass
+
+    # Handle YYYYMMDD
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y%m%d")
         result = date.strftime("%Y-%m-%d")
     except ValueError:
         pass
@@ -63,7 +77,7 @@ def clean_dateTime(raw_input):  # noqa: C901
     # Handle RFC 1123 format
     try:
         date = datetime.datetime.strptime(raw_input, "%a, %d %b %Y %H:%M:%S GMT")
-        result = date.strftime("%Y%m%dT%H:%M:%S%z")
+        result = date.strftime("%Y-%m-%dT%H:%M:%S+00:00")
 
     except ValueError:
         pass
