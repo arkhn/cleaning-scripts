@@ -1,5 +1,5 @@
 import datetime
-import re
+# import re
 from scripts import utils
 
 
