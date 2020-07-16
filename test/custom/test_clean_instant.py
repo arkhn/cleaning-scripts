@@ -51,3 +51,8 @@ def test_clean_instant():
     raw_input_10 = "Wed, 13 Mar 2075 00:00:00 GMT"
     output_10 = clean_instant(raw_input_10)
     assert output_10 == "2075-03-13T00:00:00+00:00"
+
+    # YYYYMMDDHHMM format test
+    raw_input_11 = "201502071740"
+    output_11 = clean_instant(raw_input_11)
+    assert output_11 == "2015-02-07T17:40:00+02:00"

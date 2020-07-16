@@ -45,7 +45,14 @@ def clean_instant(raw_input):  # noqa: C901
         result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
     except ValueError:
         pass
-
+    
+    # Handle YYYYMMDDHHMM
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M")
+        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
+    except ValueError:
+        pass
+    
     # Handle YYYY-MM-DD H:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
