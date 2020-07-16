@@ -41,6 +41,12 @@ def clean_date(raw_input):  # noqa: C901
     except ValueError:
         pass
 
+    # Handle YYYYMMDDHHMM
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M")
+    except ValueError:
+        pass
+
     if date is None:
         return raw_input
 
