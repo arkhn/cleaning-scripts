@@ -1,7 +1,8 @@
-from scripts.custom.clean_date import clean_date
+from scripts.custom import clean_date
 
 
 def test_clean_date():
+
     # YYYY
     raw_input_1 = "2015"
     output_1 = clean_date(raw_input_1)

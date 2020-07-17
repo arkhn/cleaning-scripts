@@ -1,6 +1,6 @@
 import datetime
 
-# import re
+import re
 from scripts import utils
 
 
@@ -12,33 +12,9 @@ def clean_date(raw_input):  # noqa: C901
 
     date = None
 
-    # Handle YYYY
+    # Handle YYYYMMDDHHMM
     try:
-        date = datetime.datetime.strptime(raw_input, "%Y")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m")
-    except ValueError:
-        pass
-
-    # Handle YYYYMM
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DD
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d")
-    except ValueError:
-        pass
-
-    # Handle YYYYMMDD
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m%d")
+        date = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M")
     except ValueError:
         pass
 
@@ -66,10 +42,46 @@ def clean_date(raw_input):  # noqa: C901
     except ValueError:
         pass
 
-    # Handle YYYYMMDDHHMM
+    # Handle YYYY-MM-DD
     try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M")
+
+        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d")
     except ValueError:
+        pass
+
+    # Handle YYYYMMDD
+    try:
+
+        date = datetime.datetime.strptime(raw_input, "%Y%m%d")
+    except ValueError:
+        pass
+
+    # Handle YYYY-MM
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y-%m")
+    except ValueError:
+        pass
+
+    # Handle YYYYMM
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y%m")
+    except ValueError:
+        pass
+
+    # Handle YYYY
+    try:
+        date = datetime.datetime.strptime(raw_input, "%Y")
+    except ValueError:
+        pass
+
+    # Correct format
+    try:
+        full_match = re.fullmatch(
+            raw_input,
+            r"([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?",
+        )
+        date = datetime.datetime.strptime(full_match.group(0)[0:10], "%Y-%m-%d")
+    except Exception:
         pass
 
     if date is None:
