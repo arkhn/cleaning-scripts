@@ -1,4 +1,5 @@
 import datetime
+
 # import re
 from scripts import utils
 
@@ -70,15 +71,6 @@ def clean_date(raw_input):  # noqa: C901
         date = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M")
     except ValueError:
         pass
-
-    # Correct format
-    # try:
-    #     full_match = re.fullmatch(
-    #         raw_input,r"regex"
-    #     )
-    #     date = datetime.datetime.strptime(full_match.group(0)[0:10], "%Y-%m-%d")
-    # except Exception:
-    #     pass
 
     if date is None:
         return raw_input
