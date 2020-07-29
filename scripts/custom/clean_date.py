@@ -1,5 +1,6 @@
 import datetime
 
+import re
 from scripts import utils
 
 
@@ -11,35 +12,36 @@ def clean_date(raw_input):  # noqa: C901
 
     date = None
 
-    # Handle YYYY-MM-DD
+    # Correct format
     try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d")
-    except ValueError:
+        pattern = re.compile(
+            r"([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)"
+            r"(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3])"
+            r":[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):"
+            r"[0-5][0-9]|14:00)))?)?)?"
+        )
+        full_match = re.fullmatch(raw_input, pattern)
+        date = datetime.datetime.strptime(full_match.group(0)[0:10], "%Y-%m-%d")
+    except Exception:
         pass
 
-    # Handle YYYYMMDD
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m%d")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DD H:M:S
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DDTH:M:S
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
-    except ValueError:
-        pass
-
-    # Handle RFC 1123 format
-    try:
-        date = datetime.datetime.strptime(raw_input, "%a, %d %b %Y %H:%M:%S GMT")
-    except ValueError:
-        pass
+    formats = [
+        "%Y%m%d%H%M",
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S%z",
+        "%a, %d %b %Y %H:%M:%S %Z",
+        "%Y-%m-%d",
+        "%Y%m%d",
+        "%Y-%m",
+        "%Y%m",
+        "%Y",
+    ]
+    for fmt in formats:
+        try:
+            date = datetime.datetime.strptime(raw_input, fmt)
+        except ValueError:
+            pass
 
     if date is None:
         return raw_input

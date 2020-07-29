@@ -10,55 +10,23 @@ def clean_instant(raw_input):  # noqa: C901
 
     date = None
 
-    # Handle YYYY
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
+    formats = [
+        "%Y",
+        "%Y-%m",
+        "%Y%m",
+        "%Y-%m-%d",
+        "%Y%m%d",
+        "%Y%m%d%H%M",
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S",
+    ]
+    for fmt in formats:
+        try:
+            date = datetime.datetime.strptime(raw_input, fmt)
+            result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
 
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
-    except ValueError:
-        pass
-
-    # Handle YYYYMM
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DD
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
-    except ValueError:
-        pass
-
-    # Handle YYYYMMDD
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y%m%d")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DD H:M:S
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DDTH:M:S
-    try:
-        date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
-    except ValueError:
-        pass
+        except ValueError:
+            pass
 
     # Handle YYYY-MM-DDTH:M:S+zz:zz
     try:
