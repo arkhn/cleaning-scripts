@@ -16,4 +16,7 @@ __all__ = [
     "merge_concat",
     "select_first_not_empty",
     "strip",
+    "select_max",
+    "select_min"
+    
 ]

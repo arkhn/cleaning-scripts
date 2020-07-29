@@ -87,7 +87,6 @@ def clean_date(raw_input):  # noqa: C901
     except ValueError:
         pass
 
-
     if date is None:
         return raw_input
 

@@ -10,15 +10,15 @@ def clean_time(raw_input):  # noqa: C901
     if utils.is_empty(raw_input):
         return ""
     time = None
-    
+
     # HH:MM:SS
     try:
         time = datetime.datetime.strptime(raw_input, "%H:%M:%S").time()
     except ValueError:
         pass
-    
+
     # HH:MM:SS.f
-    try: 
+    try:
         time = datetime.datetime.strptime(raw_input, "%H:%M:%S.%f").time()
     except ValueError:
         pass
@@ -28,14 +28,13 @@ def clean_time(raw_input):  # noqa: C901
         time = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M%S").time()
     except ValueError:
         pass
-    
+
     # Handle YYYYMMDDHHMM
     try:
         time = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M").time()
     except ValueError:
         pass
-    
-    
+
     # Handle YYYY-MM-DD H:M:S
     try:
         time = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
@@ -71,26 +70,25 @@ def clean_time(raw_input):  # noqa: C901
         time = datetime.datetime.strptime(raw_input, "%H::%M::%S").time()
     except ValueError:
         pass
-    
+
     # Handle HH MM SS
     try:
         time = datetime.datetime.strptime(raw_input, "%H %M %S").time()
     except ValueError:
         pass
-    
+
     # Handle HHMMSS
     try:
         time = datetime.datetime.strptime(raw_input, "%H%M%S").time()
     except ValueError:
         pass
 
-
     # Handle HHMM
     try:
         time = datetime.datetime.strptime(raw_input, "%H%M").time()
     except ValueError:
         pass
-    
+
     if not time:
         time = datetime.datetime.strptime("00:00:00", "%H:%M:%S").time()
 
