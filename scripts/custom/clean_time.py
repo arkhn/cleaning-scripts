@@ -10,83 +10,26 @@ def clean_time(raw_input):  # noqa: C901
         return ""
     time = None
 
-    # HH:MM:SS
-    try:
-        time = datetime.datetime.strptime(raw_input, "%H:%M:%S").time()
-    except ValueError:
-        pass
-
-    # HH:MM:SS.f
-    try:
-        time = datetime.datetime.strptime(raw_input, "%H:%M:%S.%f").time()
-    except ValueError:
-        pass
-
-    # Handle YYYYMMDDHHMMSS
-    try:
-        time = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M%S").time()
-    except ValueError:
-        pass
-
-    # Handle YYYYMMDDHHMM
-    try:
-        time = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M").time()
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DD H:M:S
-    try:
-        time = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DDTH:M:S
-    try:
-        time = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
-    except ValueError:
-        pass
-
-    # Handle YYYY-MM-DDTH:M:S+zzzz
-    try:
-        time = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S%z")
-    except ValueError:
-        pass
-
-    # Handle RFC 1123 format
-    try:
-        time = datetime.datetime.strptime(raw_input, "%a, %d %b %Y %H:%M:%S %Z")
-    except ValueError:
-        pass
-
-    # Handle H:M:S+zz:zz
-    try:
-        time = datetime.datetime.strptime(raw_input, "%H:%M:%S%z").time()
-    except ValueError:
-        pass
-
-    # Handle HH::MM::SS
-    try:
-        time = datetime.datetime.strptime(raw_input, "%H::%M::%S").time()
-    except ValueError:
-        pass
-
-    # Handle HH MM SS
-    try:
-        time = datetime.datetime.strptime(raw_input, "%H %M %S").time()
-    except ValueError:
-        pass
-
-    # Handle HHMMSS
-    try:
-        time = datetime.datetime.strptime(raw_input, "%H%M%S").time()
-    except ValueError:
-        pass
-
-    # Handle HHMM
-    try:
-        time = datetime.datetime.strptime(raw_input, "%H%M").time()
-    except ValueError:
-        pass
+    formats = [
+        "%H:%M:%S",
+        "%H:%M:%S.%f",
+        "%Y%m%d%H%M%S",
+        "%Y%m%d%H%M",
+        "%Y-%m-%d %H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%dT%H:%M:%S%z",
+        "%a, %d %b %Y %H:%M:%S %Z",
+        "%H:%M:%S%z",
+        "%H::%M::%S",
+        "%H %M %S",
+        "%H%M%S",
+        "%H%M",
+    ]
+    for fmt in formats:
+        try:
+            time = datetime.datetime.strptime(raw_input, fmt).time()
+        except ValueError:
+            pass
 
     if not time:
         return "00:00:00"
