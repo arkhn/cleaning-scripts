@@ -89,6 +89,6 @@ def clean_time(raw_input):  # noqa: C901
         pass
 
     if not time:
-        time = datetime.datetime.strptime("00:00:00", "%H:%M:%S").time()
+        return "00:00:00"
 
     return time.strftime("%H:%M:%S")
