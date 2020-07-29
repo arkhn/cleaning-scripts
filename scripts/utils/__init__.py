@@ -5,6 +5,8 @@ from .merge_concat import merge_concat
 from .merge_datetime import merge_datetime
 from .select_first_not_empty import select_first_not_empty
 from .strip import strip
+from .select_max import select_max
+from .select_min import select_min
 
 
 __all__ = [

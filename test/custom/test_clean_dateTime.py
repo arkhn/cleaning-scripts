@@ -1,4 +1,4 @@
-from scripts.custom.clean_dateTime import clean_dateTime
+from scripts.custom import clean_dateTime
 
 
 def test_clean_dateTime():
