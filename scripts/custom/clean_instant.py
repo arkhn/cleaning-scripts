@@ -22,7 +22,7 @@ def clean_instant(raw_input):  # noqa: C901
     ]
     for fmt in formats:
         try:
-            date = datetime.datetime.strptime(raw_input, fmt).time()
+            date = datetime.datetime.strptime(raw_input, fmt)
             result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
 
         except ValueError:
