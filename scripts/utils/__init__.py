@@ -17,6 +17,5 @@ __all__ = [
     "select_first_not_empty",
     "strip",
     "select_max",
-    "select_min"
-    
+    "select_min",
 ]
