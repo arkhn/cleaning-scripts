@@ -6,6 +6,9 @@ import logging
 def clean_quantity(raw_input):
     """Removes input not conform to FHIR quantity type
     """
+    if isinstance(raw_input, float) or isinstance(raw_input, int):
+        print("Float !")
+        return raw_input
 
     if utils.is_empty(raw_input):
         return None
