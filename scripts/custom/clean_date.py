@@ -5,6 +5,7 @@ from scripts import utils
 
 
 def clean_date(raw_input):  # noqa: C901
+    # comment
     if not isinstance(raw_input, str):
         raw_input = str(raw_input)
     if utils.is_empty(raw_input):
