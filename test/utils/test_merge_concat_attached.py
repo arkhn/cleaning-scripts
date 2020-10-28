@@ -39,10 +39,7 @@ def test_merge_concat_attached():
 
     # Tests date
 
-    assert (
-        utils.merge_concat_attached("testing", datetime.date(2020, 5, 17))
-        == "testing2020-05-17"
-    )
+    assert utils.merge_concat_attached("testing", datetime.date(2020, 5, 17)) == "testing2020-05-17"
 
     # Tests boolean
 
