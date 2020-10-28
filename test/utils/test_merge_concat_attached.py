@@ -6,7 +6,11 @@ def test_merge_concat_attached():
 
     assert utils.merge_concat_attached("1", "2") == "12"
 
+    assert utils.merge_concat_attached(1, 2) == "12"
+
     assert utils.merge_concat_attached("1", "2", "3") == "123"
+
+    assert utils.merge_concat_attached(1, 2, 3) == "123"
 
     assert utils.merge_concat_attached("a", "b", "ab") == "abab"
 
