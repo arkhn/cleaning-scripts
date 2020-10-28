@@ -27,7 +27,7 @@ def test_merge_concat_attached():
 
     assert utils.merge_concat_attached(1, 2, 3) == "123"
 
-    # Tests date
+    # Tests datetime
 
     dateNow = datetime.datetime.now()
     assert utils.merge_concat_attached("a", dateNow) == "a" + str(dateNow)
@@ -35,6 +35,13 @@ def test_merge_concat_attached():
     assert (
         utils.merge_concat_attached("testing", datetime.datetime(2020, 5, 17))
         == "testing2020-05-17 00:00:00"
+    )
+
+    # Tests date
+
+    assert (
+        utils.merge_concat_attached("testing", datetime.date(2020, 5, 17))
+        == "testing2020-05-17"
     )
 
     # Tests boolean
