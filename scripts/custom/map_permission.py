@@ -8,8 +8,7 @@ class Authorization(Enum):
 
 
 def map_permission(raw_input):
-    """Map UMLS codes (Yes, No) to (permit, deny)
-    """
+    """Map UMLS codes (Yes, No) to (permit, deny)"""
     if utils.is_empty(raw_input):
         return None
     mapping = {
