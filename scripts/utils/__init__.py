@@ -1,7 +1,7 @@
 """Utility scripts"""
 from .is_empty import is_empty
 from .make_title import make_title
-from .merge_concat_attached import merge_concat_attached
+from .concat_without_separator import concat_without_separator
 from .merge_concat import merge_concat
 from .merge_datetime import merge_datetime
 from .select_first_not_empty import select_first_not_empty
@@ -14,7 +14,7 @@ __all__ = [
     "is_empty",
     "make_title",
     "merge_datetime",
-    "merge_concat_attached",
+    "concat_without_separator",
     "merge_concat",
     "select_first_not_empty",
     "strip",
