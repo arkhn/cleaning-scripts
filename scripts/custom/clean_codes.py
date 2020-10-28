@@ -18,8 +18,7 @@ terminologies = [
 
 
 def clean_codes(raw_input):
-    """Remove terminology system from code ("HL7:male") to ("male")
-    """
+    """Remove terminology system from code ("HL7:male") to ("male")"""
     if utils.is_empty(raw_input):
         return None
 

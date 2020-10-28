@@ -18,8 +18,7 @@ class MaritalStatus(Enum):
 
 
 def map_marital_status(code):
-    """Map MIMIC marital status
-    """
+    """Map MIMIC marital status"""
     status = MaritalStatus
     mapping = {
         "MARRIED": status.Married.value,

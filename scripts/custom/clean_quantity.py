@@ -4,7 +4,9 @@ import logging
 
 
 def clean_quantity(raw_input):
-    """[deprecated: river parses types automatically] Removes input not conform to FHIR quantity type
+    """
+    [deprecated: river parses types automatically]
+    Removes input not conform to FHIR quantity type
     """
     if isinstance(raw_input, (float, int)):
         return raw_input

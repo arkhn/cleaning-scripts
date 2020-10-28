@@ -8,8 +8,7 @@ class Deceased(Enum):
 
 
 def map_deceased(raw_input):
-    """Map (O,N) to (True, False)
-    """
+    """Map (O,N) to (True, False)"""
     mapping = {"O": Deceased.DEAD.value, "N": Deceased.ALIVE.value}
     if raw_input in mapping.keys():
         return mapping[raw_input]

@@ -9,8 +9,7 @@ class Gender(Enum):
 
 
 def map_gender(raw_input):
-    """Map gender from (M,F) or (HL7:M, HL7:F) to (male,female)
-    """
+    """Map gender from (M,F) or (HL7:M, HL7:F) to (male,female)"""
     if utils.is_empty(raw_input):
         return None
 
