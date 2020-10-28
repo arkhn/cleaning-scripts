@@ -12,5 +12,7 @@ def test_merge_concat_attached():
 
     assert utils.merge_concat_attached("a   ", " b", "  ab") == "a    b  ab"
 
-    assert utils.merge_concat_attached(
-        "Pyrog      ", " Is         ", "  Awesome ") == "Pyrog       Is           Awesome "
+    assert (
+        utils.merge_concat_attached("Pyrog      ", " Is         ", "  Awesome ")
+        == "Pyrog       Is           Awesome "
+    )
