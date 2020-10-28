@@ -136,10 +136,5 @@ jobs:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
-          VERSION="${GITHUB_REF#refs/tags/}"
-          # Does the tag follow numeric versioning ?
-          if [[ "${VERSION}" =~ ^v[0-9]{1,3}(\.[0-9]{1,3}(\.[0-9]{1,3})?)?$ ]]; then
-            VERSION="${VERSION#v}"
-            python setup.py sdist bdist_wheel
-            twine upload dist/*.tar.gz
-          fi
+          python setup.py sdist bdist_wheel
+          twine upload dist/*.tar.gz
