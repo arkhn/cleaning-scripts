@@ -1,16 +1,7 @@
 from scripts import utils
 import re
 
-comparator = [
-    "<=",
-    ">=",
-    "=",
-    "=>",
-    "=<",
-    ">",
-    "<",
-    "",
-]
+comparator = ["<=", ">=", "=", "=>", "=<", ">", "<", ""]
 
 
 def clean_comparatedNumber(raw_input):
