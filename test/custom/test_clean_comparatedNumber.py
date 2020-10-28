@@ -1,7 +1,8 @@
 from scripts.custom import clean_comparatedNumber
 
+
 def test_clean_comparatedNumber():
-  
+
     # XX
     raw_input_1 = "31"
     output_1 = clean_comparatedNumber(raw_input_1)
@@ -46,5 +47,6 @@ def test_clean_comparatedNumber():
     raw_input_9 = ">39"
     output_9 = clean_comparatedNumber(raw_input_9)
     assert output_9 == "39"
+
 
 test_clean_comparatedNumber()
