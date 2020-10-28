@@ -1,4 +1,4 @@
-from scripts.custom import clean_comparatedNumber
+from scripts.custom.clean_comparatedNumber import clean_comparatedNumber
 
 
 def test_clean_comparatedNumber():
