@@ -1,4 +1,5 @@
 def merge_concat(*args):
-    """Merging script with a simple concatenation"""
+    """Merging script with a simple concatenation, space-between"""
     values = [v for v in args if v is not None]
-    return " ".join(values)
+    separator = " "
+    return separator.join(values)
