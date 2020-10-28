@@ -29,12 +29,19 @@ def test_merge_concat():
         utils.merge_concat("testing", datetime.datetime(2020, 5, 17))
         == "testing 2020-05-17 00:00:00"
     )
-    # Tests date
+    # Test date
 
     assert utils.merge_concat("testing", datetime.date(2020, 5, 17)) == "testing 2020-05-17"
 
-    # Tests boolean
+    # Test boolean
 
     assert utils.merge_concat(True) == "True"
 
     assert utils.merge_concat(True, False) == "True False"
+
+    # Test mixed
+    dateNow = datetime.datetime.now()
+    assert (
+        utils.merge_concat("a", dateNow, datetime.date(2020, 5, 17), True)
+        == "a " + str(dateNow) + " 2020-05-17 True"
+    )
