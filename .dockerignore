@@ -4,11 +4,13 @@
 # except
 !/api
 !/scripts
+!tests
 !.dockerignore
 !Dockerfile
 !docker-compose.yml
 !requirements.txt
-!start.sh
+!requirements-dev.txt
+!docker-entrypoint.sh
 !uwsgi.ini
 
 
