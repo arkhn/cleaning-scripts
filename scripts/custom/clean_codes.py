@@ -22,7 +22,7 @@ def clean_codes(raw_input):
     if utils.is_empty(raw_input):
         return None
 
-    code = re.match(r"([A-z0-9]*)( *: *)(.*)", raw_input)
+    code = re.match(r"([A-z0-9\-]*)( *: *)(.*)", raw_input)
 
     if not code:
         return raw_input
