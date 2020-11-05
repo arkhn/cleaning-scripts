@@ -40,8 +40,7 @@ def test_concat_without_separator():
     # Test date
 
     assert (
-        utils.concat_without_separator("testing", datetime.date(2020, 5, 17))
-        == "testing2020-05-17"
+        utils.concat_without_separator("testing", datetime.date(2020, 5, 17)) == "testing2020-05-17"
     )
 
     # Test boolean
