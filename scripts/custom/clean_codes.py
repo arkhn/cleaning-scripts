@@ -24,9 +24,7 @@ def clean_codes(raw_input):
 
     code = re.match(r"([A-z0-9\-]*)( *: *)(.*)", raw_input)
 
-    if not code:
+    if not code or not code.group(1) in codeTypes:
         return raw_input
-    elif code.group(1) in codeTypes:
-        return code.group(3)
     else:
-        return raw_input
+        return code.group(3)
