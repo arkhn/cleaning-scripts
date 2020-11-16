@@ -10,7 +10,7 @@ requirements = read("requirements.txt").split()
 
 setup(
     name="cleaning-scripts",
-    version="0.2.26",
+    version="0.2.27",
     author="Arkhn",
     author_email="contact@arkhn.org",
     description="Python scripts used in the FHIR integration pipeline "
