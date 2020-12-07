@@ -6,8 +6,6 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-requirements = read("requirements.txt").split()
-
 setup(
     name="cleaning-scripts",
     version="0.2.27",
@@ -20,5 +18,4 @@ setup(
     packages=find_packages(exclude=["api*", "test*"]),
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    install_requires=requirements,
 )
