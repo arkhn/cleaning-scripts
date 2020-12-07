@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name="cleaning-scripts",
-    version="0.2.27",
+    version="0.2.28",
     author="Arkhn",
     author_email="contact@arkhn.org",
     description="Python scripts used in the FHIR integration pipeline "
