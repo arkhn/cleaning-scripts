@@ -6,11 +6,11 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-requirements = read("requirements.txt").split()
+extras_require = {"test": ["pytest"], "dev": []}
 
 setup(
     name="cleaning-scripts",
-    version="0.2.27",
+    version="0.2.28",
     author="Arkhn",
     author_email="contact@arkhn.org",
     description="Python scripts used in the FHIR integration pipeline "
@@ -20,5 +20,5 @@ setup(
     packages=find_packages(exclude=["api*", "test*"]),
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    install_requires=requirements,
+    extras_require=extras_require,
 )
