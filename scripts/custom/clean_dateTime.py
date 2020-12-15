@@ -33,35 +33,35 @@ def clean_dateTime(raw_input):  # noqa: C901
     # Handle YYYY
     try:
         date = datetime.datetime.strptime(raw_input, "%Y")
-        result = date.strftime("%Y")
+        result = date.isoformat().split("-")[0]
     except ValueError:
         pass
 
     # Handle YYYY-MM
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m")
-        result = date.strftime("%Y-%m")
+        result = date.isoformat()[:7]
     except ValueError:
         pass
 
     # Handle YYYYMM
     try:
         date = datetime.datetime.strptime(raw_input, "%Y%m")
-        result = date.strftime("%Y-%m")
+        result = date.isoformat()[:7]
     except ValueError:
         pass
 
     # Handle YYYY-MM-DD
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%d")
-        result = date.strftime("%Y-%m-%d")
+        result = date.isoformat().split("T")[0]
     except ValueError:
         pass
 
     # Handle YYYYMMDD
     try:
         date = datetime.datetime.strptime(raw_input, "%Y%m%d")
-        result = date.strftime("%Y-%m-%d")
+        result = date.isoformat().split("T")[0]
     except ValueError:
         pass
 
