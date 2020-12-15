@@ -46,4 +46,5 @@ def clean_date(raw_input):  # noqa: C901
     if date is None:
         return raw_input
 
-    return date.strftime("%Y-%m-%d")
+    # We only want the date
+    return date.isoformat().split("T")[0]
