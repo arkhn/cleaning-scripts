@@ -4,6 +4,11 @@ import re
 from scripts import utils
 
 
+def add_default_timezone(date):
+    # By default, we set the timezone to UTC+2 (Paris)... Until we expand worldwide!
+    return date.replace(tzinfo=datetime.timezone(datetime.timedelta(hours=2)))
+
+
 def clean_dateTime(raw_input):  # noqa: C901
     if not isinstance(raw_input, str):
         raw_input = str(raw_input)
@@ -63,42 +68,46 @@ def clean_dateTime(raw_input):  # noqa: C901
     # Handle YYYYMMDDHHMM
     try:
         date = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
+        date_with_tz = add_default_timezone(date)
+        result = date_with_tz.isoformat()
     except ValueError:
         pass
 
     # Handle YYYY-MM-DD H:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
+        date_with_tz = add_default_timezone(date)
+        result = date_with_tz.isoformat()
     except ValueError:
         pass
 
     # Handle YYYY-MM-DDTH:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+02:00")
+        date_with_tz = add_default_timezone(date)
+        result = date_with_tz.isoformat()
     except ValueError:
         pass
 
     # Handle YYYY-MM-DDTH:M:S+zz:zz
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S+%z")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S%z")
+        result = date.isoformat()
     except ValueError:
         pass
 
     # Handle YYYY-MM-DDTH:M:S-zz:zz
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S-%z")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S%z")
+        result = date.isoformat()
     except ValueError:
         pass
 
     # Handle RFC 1123 format
     try:
         date = datetime.datetime.strptime(raw_input, "%a, %d %b %Y %H:%M:%S GMT")
-        result = date.strftime("%Y-%m-%dT%H:%M:%S+00:00")
+        date_with_tz = date.replace(tzinfo=datetime.timezone(datetime.timedelta(hours=0)))
+        result = date_with_tz.isoformat()
 
     except ValueError:
         pass
