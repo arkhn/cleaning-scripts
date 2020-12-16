@@ -4,11 +4,6 @@ import re
 from scripts import utils
 
 
-def add_default_timezone(date):
-    # By default, we set the timezone to UTC+2 (Paris)... Until we expand worldwide!
-    return date.replace(tzinfo=datetime.timezone(datetime.timedelta(hours=2)))
-
-
 def clean_dateTime(raw_input):  # noqa: C901
     if not isinstance(raw_input, str):
         raw_input = str(raw_input)
@@ -68,7 +63,8 @@ def clean_dateTime(raw_input):  # noqa: C901
     # Handle YYYYMMDDHHMM
     try:
         date = datetime.datetime.strptime(raw_input, "%Y%m%d%H%M")
-        date_with_tz = add_default_timezone(date)
+        # By default, we set the timezone to UTC+2 (Paris)... Until we expand worldwide!
+        date_with_tz = date.replace(tzinfo=datetime.timezone(datetime.timedelta(hours=2)))
         result = date_with_tz.isoformat()
     except ValueError:
         pass
@@ -76,7 +72,8 @@ def clean_dateTime(raw_input):  # noqa: C901
     # Handle YYYY-MM-DD H:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%d %H:%M:%S")
-        date_with_tz = add_default_timezone(date)
+        # By default, we set the timezone to UTC+2 (Paris)... Until we expand worldwide!
+        date_with_tz = date.replace(tzinfo=datetime.timezone(datetime.timedelta(hours=2)))
         result = date_with_tz.isoformat()
     except ValueError:
         pass
@@ -84,7 +81,8 @@ def clean_dateTime(raw_input):  # noqa: C901
     # Handle YYYY-MM-DDTH:M:S
     try:
         date = datetime.datetime.strptime(raw_input, "%Y-%m-%dT%H:%M:%S")
-        date_with_tz = add_default_timezone(date)
+        # By default, we set the timezone to UTC+2 (Paris)... Until we expand worldwide!
+        date_with_tz = date.replace(tzinfo=datetime.timezone(datetime.timedelta(hours=2)))
         result = date_with_tz.isoformat()
     except ValueError:
         pass
