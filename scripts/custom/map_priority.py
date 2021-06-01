@@ -19,4 +19,4 @@ def map_priority(raw_input):
     if str(raw_input) in mapping.keys():
         return mapping[str(raw_input)]
     else:
-        return mapping["3"]
+        return mapping["4"]
