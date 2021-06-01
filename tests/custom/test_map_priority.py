@@ -3,27 +3,27 @@ from scripts import custom
 
 def test_map_priority():
 
-    raw_input_1 = "0"
+    raw_input_1 = "1"
     output_1 = custom.map_priority(raw_input_1)
     assert output_1 == "stat"
 
-    raw_input_2 = 0
+    raw_input_2 = 1
     output_2 = custom.map_priority(raw_input_2)
     assert output_2 == "stat"
 
-    raw_input_3 = "1"
+    raw_input_3 = "2"
     output_3 = custom.map_priority(raw_input_3)
     assert output_3 == "asap"
 
-    raw_input_4 = 1
+    raw_input_4 = 2
     output_4 = custom.map_priority(raw_input_4)
     assert output_4 == "asap"
 
-    raw_input_5 = "2"
+    raw_input_5 = "3"
     output_5 = custom.map_priority(raw_input_5)
     assert output_5 == "urgent"
 
-    raw_input_6 = 2
+    raw_input_6 = 3
     output_6 = custom.map_priority(raw_input_6)
     assert output_6 == "urgent"
 
